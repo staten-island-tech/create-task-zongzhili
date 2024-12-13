@@ -1,0 +1,1 @@
+const boardSpaces = [null];
