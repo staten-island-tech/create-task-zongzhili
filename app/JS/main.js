@@ -9,11 +9,6 @@ let currentPlayer = "player1";
 
 function createBoard() {
   for (i = 0; i < 6; i++) {
-    for (i = 0; i < 7; i++) {
-      const board = (spaces) => `
-            <div class="board">
-
-            </div>`;
-    }
+    for (i = 0; i < 7; i++) {}
   }
 }
