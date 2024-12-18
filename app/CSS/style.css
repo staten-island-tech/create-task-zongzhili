@@ -3,17 +3,27 @@ html, body, * {
   margin: 0;
   box-sizing: border-box;
 }
-body {
-}
-h1 {
-  text-align: center;
-}
+
 button {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  background: linear-gradient(45deg, #e61414, #ed9511);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-family: "Work Sans", sans-serif;
 }
+
+button:hover {
+  background: linear-gradient(45deg, #ffe641, #ff4b2b);
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
 .buttons {
   display: flex;
   flex-direction: row;
@@ -21,4 +31,53 @@ button {
   align-items: center;
   justify-content: space-evenly;
   gap: 15px;
+}
+
+:root {
+  --black: #000;
+  --light-blue: #2998ff;
+  --dark-blue: #135cc5;
+  --light-red: #f87171;
+  --dark-red: #dc2626;
+  --gray: #252c30;
+
+  /*intentions*/
+--primary: var(--light-blue);
+--secondary: var(--dark-blue);
+
+  /* Typography */
+  --h1: 60px;
+  --h2: 40px;
+  --h3: 33px;
+  --h4: 25px;
+  --h5: 20px;
+}
+h1{
+  font-size: var(--h1);
+  font-family: "Eczar", serif;
+  text-align: center;
+}
+h2{
+  font-size: var(--h2);
+}
+h3{
+  font-size: var(--h3);
+}
+h4{
+  font-size: var(--h4);
+  font-family: "Cormorant", serif;
+}
+h5{
+  font-size: var(--h5);
+  font-family: "Playfair Display", serif;
+}
+.hot{
+  --primary: var(--light-red);
+  --secondary: var(--dark-red);
+  background-color: var(--primary);
+}
+.cold{
+  --primary: var(--light-blue);
+  --secondary: var(--dark-blue);
+  background-color: var(--primary);
 }
