@@ -30,7 +30,7 @@ button:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  gap: 15px;
+  margin-top: 15px;
 }
 
 :root {

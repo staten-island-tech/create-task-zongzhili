@@ -11,23 +11,23 @@ function createBoard() {
 
 const players = ["Player 1", "Player 2"];
 
-let currentPlayerIndex = 0;
+let currentPlayer = 0;
 
 function changeTurn() {
-  currentPlayerIndex = (currentPlayerIndex + 1) % players.length; //alternate p1 & p2
+  currentPlayer = (currentPlayer + 1) % players.length; //alternate p1 & p2
   playerTurnElement.insertAdjacentHTML(
     "beforebegin",
-    "<h2>Player ${currentPlayerIndex}</h2>"
+    "<div><h2>Player ${currentPlayerIndex}</h2></div>"
   );
 }
 turnButton.addEventListener("click", changeTurn);
 
 // document.querySelector("buttons").addEventListener("click", function () {
 //   //yellow and red token drop
-//   if (document.body.classList.contains("cold")) {
+//   if (document.body.classList.contains("cold")) { //change to if player 1 is going, add yellow
 //     document.body.classList.add("hot");
 //     document.body.classList.remove("cold");
-//   } else {
+//   } else { //if player 2 is going, add red
 //     document.body.classList.add("cold");
 //     document.body.classList.remove("hot");
 //   }
