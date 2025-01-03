@@ -3,6 +3,10 @@ html, body, * {
   margin: 0;
   box-sizing: border-box;
 }
+body{
+  background-image: url(https://www.rd.com/wp-content/uploads/2023/10/How-to-Win-Connect-4-Every-Time-1-v2.jpg);
+  background-size: 2200px 1000px;
+}
 
 button {
   background: linear-gradient(45deg, #e61414, #ed9511);
@@ -30,7 +34,7 @@ button:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 :root {
