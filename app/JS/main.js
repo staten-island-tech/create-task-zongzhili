@@ -30,26 +30,59 @@ function dropPieces(column, player) {
   return null;
 }
 */
-const result = document.getElementById("result");
+const players = [
+  { name: "player1", score: 0 },
+  { name: "player2", score: 0 },
+];
 
-document.getElementById("roll-button").addEventListener("click", function () {
+const result = document.getElementById("result");
+const roll = document.getElementById("roll-button");
+//const winScore = 500;
+
+//while (players[0].score < winScore && players[0].score < winScore) {}
+
+roll.addEventListener("click", function () {
   document.getElementById("result").innerHTML = "";
 
   const num1 = Math.floor(Math.random() * 6) + 1;
-  console.log(num1);
-
   const num2 = Math.floor(Math.random() * 6) + 1;
-  console.log(num2);
+
   if (num1 === num2) {
     const result = document.getElementById("result");
     result.insertAdjacentHTML(
       "beforeend",
       `<p>You rolled: ${num1} and ${num2} (YAY)</p>`
     );
+    players[0].score += 20;
+    console.log(players[0].score);
   } else {
     result.insertAdjacentHTML(
       "beforeend",
       `<p>You rolled: ${num1} and ${num2}</p>`
     );
+    players[0].score += num1 + num2;
+    console.log(players[0].score);
   }
 });
+
+// const currentPlayerIndex = 0;
+
+// function changeTurn(players) {
+//   currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
+// }
+// function checkWin(players, winScore) {
+//   if(players[0].score === winScore){
+//     insertAdjacentHTML(
+//       "beforeend",
+//       '<p>Player 1 wins!</p>'
+//     )
+//     break;
+//   }
+//   if(players[1].score === winScore){
+//     insertAdjacentHTML(
+//       "beforeend",
+//       '<p>Player 2 wins!</p>'
+//       break;
+//     )
+//   }
+// }
