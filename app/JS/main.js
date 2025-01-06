@@ -1,6 +1,6 @@
 import "/CSS/style.css";
 
-const ROWS = 6;
+/*const ROWS = 6;
 const COLS = 7;
 
 let board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
@@ -29,3 +29,27 @@ function dropPieces(column, player) {
   }
   return null;
 }
+*/
+const result = document.getElementById("result");
+
+document.getElementById("roll-button").addEventListener("click", function () {
+  document.getElementById("result").innerHTML = "";
+
+  const num1 = Math.floor(Math.random() * 6) + 1;
+  console.log(num1);
+
+  const num2 = Math.floor(Math.random() * 6) + 1;
+  console.log(num2);
+  if (num1 === num2) {
+    const result = document.getElementById("result");
+    result.insertAdjacentHTML(
+      "beforeend",
+      `<p>You rolled: ${num1} and ${num2} (YAY)</p>`
+    );
+  } else {
+    result.insertAdjacentHTML(
+      "beforeend",
+      `<p>You rolled: ${num1} and ${num2}</p>`
+    );
+  }
+});
