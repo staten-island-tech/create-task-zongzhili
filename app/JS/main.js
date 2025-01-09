@@ -4,6 +4,7 @@ const players = [
   { name: "Player 1", score: 0 },
   { name: "Player 2", score: 0 },
 ];
+
 const winScore = 100;
 let currentPlayerIndex = 0;
 
@@ -15,14 +16,9 @@ function rollDice() {
   const num2 = Math.floor(Math.random() * 6) + 1;
   return [num1, num2];
 }
-roll.addEventListener("click", function () {
-  //add iteration and parameters
-  //for (let turn = 0; turn < 30; turn++) {
-  document.getElementById("result").innerHTML = "";
 
-  const [num1, num2] = rollDice();
-  const currentPlayer = players[currentPlayerIndex];
-
+function displayRollResult(num1, num2, currentPlayer) {
+  result.innerHTML = "";
   if (num1 === num2) {
     const result = document.getElementById("result");
     result.insertAdjacentHTML(
@@ -42,42 +38,29 @@ roll.addEventListener("click", function () {
     "beforeend",
     `<h3> ${currentPlayer.name}'s score: ${currentPlayer.score}</h3>`
   );
-
+}
+function checkWin(currentPlayer) {
   if (currentPlayer.score >= winScore) {
     result.insertAdjacentHTML(
       "beforeend",
       `<p>${currentPlayer.name} wins with ${currentPlayer.score} points!</p>`
     );
     rollButton.disabled = true;
+    return true;
+  }
+  return false;
+}
+function switchPlayer() {
+  currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+}
+roll.addEventListener("click", function () {
+  const [num1, num2] = rollDice();
+  const currentPlayer = players[currentPlayerIndex];
+
+  displayRollResult(num1, num2, currentPlayer);
+
+  if (checkWin(currentPlayer)) {
     return;
   }
-  currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-  // if (turn === 39) {
-  //   result.insertAdjacentHTML(
-  //     "beforeend",
-  //     "<p>Game Over! Maximum turns reached.</p>"
-  //   );
-  //   rollButton.disabled = true;
-  // }
-  //}
+  switchPlayer();
 });
-function gameOver() {}
-// function changeTurn(players) {
-//   currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
-// }
-// function checkWin(players, winScore) {
-//   if(players[0].score === winScore){
-//     insertAdjacentHTML(
-//       "beforeend",
-//       '<p>Player 1 wins!</p>'
-//     )
-//     break;
-//   }
-//   if(players[1].score === winScore){
-//     insertAdjacentHTML(
-//       "beforeend",
-//       '<p>Player 2 wins!</p>'
-//       break;
-//     )
-//   }
-// }
