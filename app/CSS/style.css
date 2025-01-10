@@ -54,20 +54,11 @@ button:hover {
 }
 h1{
   font-size: var(--h1);
-  font-family: "Eczar", serif;
+}
+h1, h2, h3, p{
   text-align: center;
 }
-h2{
-  font-size: var(--h2);
-}
-h3{
-  font-size: var(--h3);
-}
-h4{
-  font-size: var(--h4);
-  font-family: "Cormorant", serif;
-}
-h5{
-  font-size: var(--h5);
-  font-family: "Playfair Display", serif;
+.center-container {
+  display: flex;
+  justify-content: center;
 }

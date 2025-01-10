@@ -7,9 +7,12 @@ const players = [
 
 const winScore = 100;
 let currentPlayerIndex = 0;
+let turnCounter = 1;
 
 const result = document.getElementById("result");
 const roll = document.getElementById("roll-button");
+const playerScores = document.getElementById("playerScores");
+const turnDisplay = document.getElementById("turnDisplay");
 
 function rollDice() {
   const num1 = Math.floor(Math.random() * 6) + 1;
@@ -25,7 +28,7 @@ function displayRollResult(numRolls, currentPlayer) {
       const result = document.getElementById("result");
       result.insertAdjacentHTML(
         "beforeend",
-        `<h3>${currentPlayer.name} rolled: ${num1} and ${num2} (YAY)</h3>`
+        `<h3>${currentPlayer.name} rolled: ${num1} TWICE, YAY! You get 20 points!</h3>`
       );
       currentPlayer.score += 20;
     } else {
@@ -36,23 +39,31 @@ function displayRollResult(numRolls, currentPlayer) {
       currentPlayer.score += num1 + num2;
     }
     console.log(`${currentPlayer.name}'s score: ${currentPlayer.score}`);
-    result.insertAdjacentHTML(
-      "beforeend",
-      `<h3> ${currentPlayer.name}'s score: ${currentPlayer.score}</h3>`
-    );
   }
+  players.forEach((player) => {
+    playerScores.insertAdjacentHTML(
+      "beforeend",
+      `<h3>${player.name}'s score: ${player.score}</h3>`
+    );
+  });
 }
+
 function checkWin(currentPlayer) {
   if (currentPlayer.score >= winScore) {
     result.insertAdjacentHTML(
       "beforeend",
-      `<p>${currentPlayer.name} wins with ${currentPlayer.score} points!</p>`
+      `<h1>${currentPlayer.name} wins with ${currentPlayer.score} points!</h1>`
     );
     rollButton.disabled = true;
     return true;
   }
   return false;
 }
+function updateTurnCounter() {
+  turnCounter++;
+  turnDisplay.innerHTML = `<h2>Turn: ${turnCounter}</h2>`;
+}
+
 function switchPlayer() {
   currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 }
@@ -65,6 +76,7 @@ roll.addEventListener("click", function () {
   if (checkWin(currentPlayer)) {
     return;
   }
+  updateTurnCounter();
   switchPlayer();
 });
 
