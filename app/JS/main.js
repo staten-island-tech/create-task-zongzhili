@@ -75,7 +75,7 @@ roll.addEventListener("click", function () {
 
   displayRollResult(currentPlayer);
 
-  if (checkWin(currentPlayer)) {
+  if (checkWin(currentPlayer) === true) {
     return;
   }
   updateTurnCounter();
