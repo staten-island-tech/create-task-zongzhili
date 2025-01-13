@@ -5,14 +5,25 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dice Game</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400..800&display=swap');
+    </style>
+    <link rel="stylesheet" href="/html/styles.css">
   </head>
   <body>
-    <h1>Roll a Dice</h1>
+    <h1>Dice Duel</h1>
     <h2>First to 100 points wins!</h2>
     <div id="turnDisplay"><h2>Turn: 1</h2></div>
-<div class="center-container"><button id="roll-button">Roll Dice</button></div>
-    <div id="playerScores"></div>
-    <div id="result"></div>
+<div class="center-container">
+  <button id="roll-button">Roll Dices</button>
+</div>
+<div id="playerScores">
+  <h3>Player 1's score: 0<br>
+      Player 2's score: 0</h3>
+</div>
+<div id="result">
+  <h3>Press Roll Dices to Start Game!</h3>
+</div>
     <script type="module" src="/JS/main.js"></script>
   </body>
 </html>

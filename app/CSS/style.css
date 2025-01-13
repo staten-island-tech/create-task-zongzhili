@@ -3,19 +3,24 @@ html, body, * {
   margin: 0;
   box-sizing: border-box;
 }
-
+body{
+  background-color: #cae6ff;
+  font-family: "Eczar", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
 button {
-  background: linear-gradient(45deg, #e61414, #ed9511);
-  color: rgb(255, 255, 255);
+  background-color: #007acc;
+  color: #fff;
   font-size: 16px;
-  font-weight: bold;
-  padding: 15px 30px;
   border: none;
-  border-radius: 50px;
-  transition: all 0.5s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
-  font-family: "Work Sans", sans-serif;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
@@ -24,28 +29,15 @@ button:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.buttons {
+.center-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-top: 10px;
+  justify-content: center;
 }
-
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 :root {
-  --black: #000;
-  --light-blue: #2998ff;
-  --dark-blue: #135cc5;
-  --light-red: #f87171;
-  --dark-red: #dc2626;
-  --gray: #252c30;
-
-  /*intentions*/
---primary: var(--light-blue);
---secondary: var(--dark-blue);
-
-  /* Typography */
   --h1: 60px;
   --h2: 40px;
   --h3: 33px;
@@ -55,10 +47,27 @@ button:hover {
 h1{
   font-size: var(--h1);
 }
+h2{
+  font-size: var(--h2);
+}
+h3{
+  font-size: var(--h3);
+}
 h1, h2, h3, p{
   text-align: center;
 }
-.center-container {
+#result, #playerScores {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
 }

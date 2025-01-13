@@ -20,26 +20,27 @@ function rollDice() {
   return [num1, num2];
 }
 
-function displayRollResult(numRolls, currentPlayer) {
-  for (let i = 0; i < numRolls; i++) {
-    const [num1, num2] = rollDice();
-    result.innerHTML = "";
-    if (num1 === num2) {
-      const result = document.getElementById("result");
-      result.insertAdjacentHTML(
-        "beforeend",
-        `<h3>${currentPlayer.name} rolled: ${num1} TWICE, YAY! You get 20 points!</h3>`
-      );
-      currentPlayer.score += 20;
-    } else {
-      result.insertAdjacentHTML(
-        "beforeend",
-        `<h3>${currentPlayer.name} rolled: ${num1} and ${num2}</h3>`
-      );
-      currentPlayer.score += num1 + num2;
-    }
-    console.log(`${currentPlayer.name}'s score: ${currentPlayer.score}`);
+function displayRollResult(currentPlayer) {
+  const [num1, num2] = rollDice();
+  result.innerHTML = "";
+  if (num1 === num2) {
+    const result = document.getElementById("result");
+    result.insertAdjacentHTML(
+      "beforeend",
+      `<h3>${currentPlayer.name} rolled: ${num1} TWICE, YAY! You get 20 points!</h3>`
+    );
+    currentPlayer.score += 20;
+  } else {
+    result.insertAdjacentHTML(
+      "beforeend",
+      `<h3>${currentPlayer.name} rolled: ${num1} and ${num2}. You get ${
+        num1 + num2
+      } points!</h3>`
+    );
+    currentPlayer.score += num1 + num2;
   }
+
+  playerScores.innerHTML = "";
   players.forEach((player) => {
     playerScores.insertAdjacentHTML(
       "beforeend",
@@ -54,11 +55,12 @@ function checkWin(currentPlayer) {
       "beforeend",
       `<h1>${currentPlayer.name} wins with ${currentPlayer.score} points!</h1>`
     );
-    rollButton.disabled = true;
+    roll.disabled = true;
     return true;
   }
   return false;
 }
+
 function updateTurnCounter() {
   turnCounter++;
   turnDisplay.innerHTML = `<h2>Turn: ${turnCounter}</h2>`;
@@ -67,11 +69,11 @@ function updateTurnCounter() {
 function switchPlayer() {
   currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 }
+
 roll.addEventListener("click", function () {
-  const numRolls = 2;
   const currentPlayer = players[currentPlayerIndex];
 
-  displayRollResult(numRolls, currentPlayer);
+  displayRollResult(currentPlayer);
 
   if (checkWin(currentPlayer)) {
     return;
@@ -79,19 +81,3 @@ roll.addEventListener("click", function () {
   updateTurnCounter();
   switchPlayer();
 });
-
-// const winScores = [50, 100, 200]; // Array of different win score thresholds
-
-// function checkWinMultipleThresholds(currentPlayer) {
-//   for (let i = 0; i < winScores.length; i++) {
-//     if (currentPlayer.score >= winScores[i]) {
-//       result.insertAdjacentHTML(
-//         "beforeend",
-//         `<p>${currentPlayer.name} wins with ${currentPlayer.score} points! (Threshold: ${winScores[i]})</p>`
-//       );
-//       rollButton.disabled = true;
-//       return true;
-//     }
-//   }
-//   return false;
-// }
