@@ -24,7 +24,6 @@ function displayRollResult(currentPlayer) {
   const [num1, num2] = rollDice();
   result.innerHTML = "";
   if (num1 === num2) {
-    const result = document.getElementById("result");
     result.insertAdjacentHTML(
       "beforeend",
       `<h3>${currentPlayer.name} rolled: ${num1} TWICE, YAY! You get 20 points!</h3>`
